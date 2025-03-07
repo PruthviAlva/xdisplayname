@@ -9,15 +9,11 @@ function App() {
   const [name, setName] = useState('');
 
   const displayName = (e) => {
+    e.preventDefault(); // Prevent form submission reload
     if (firstName !== '' && lastName !== '') {
-      e.preventDefault();
       setFlag(true);
-      setName(firstName + " " + lastName)
-    } else if (firstName === '') {
-      setFirstName('');
-      setFlag(false);
-    } else if (lastName === '') {
-      setLastName('');
+      setName(firstName + " " + lastName);
+    } else {
       setFlag(false);
     }
   }
@@ -28,14 +24,14 @@ function App() {
         <h1>Full Name Display</h1>
         <div>
           <label>First Name:</label>
-          <input type="text" onChange={(e) => setFirstName(e.target.value)} required />
+          <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
         </div>
         <div>
           <label>Last Name:</label>
-          <input type="text" onChange={(e) => setLastName(e.target.value)} required />
+          <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} required />
         </div>
         <div>
-          <button onClick={(e) => displayName(e)}>Submit</button>
+          <button type="submit" onClick={(e) => displayName(e)}>Submit</button>
         </div>
       </form>
       <div>

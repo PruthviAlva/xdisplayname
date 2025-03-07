@@ -15,6 +15,7 @@ function App() {
       setName(firstName + " " + lastName);
     } else {
       setFlag(false);
+      setName('');
     }
   }
 
